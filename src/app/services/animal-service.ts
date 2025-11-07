@@ -10,8 +10,16 @@ export class AnimalService {
   httpOptions = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) {}
-
+  //Metodo para consultar todos los animales
   getAllAnimalsData(): Observable<any> {
+    //get es el verbo HTTP GET
     return this.http.get<any>(this.apiUri);
+  }
+  
+  newAnimal(data: any): Observable<any> {
+    return this.http.post<any>(
+      this.apiUri,
+      data,
+      { headers: this.httpOptions });
   }
 }
