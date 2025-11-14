@@ -74,6 +74,14 @@ export class AnimalComponent {
       .subscribe(() => window.location.reload()); //hacer refresco a la pagina
   }
 
+  deleteAnimalEntry(id: any) {
+    console.log(id);
+    this.animalService.deleteAnimal(id).subscribe(() => {
+      //Enviando mensaje de confirmación
+      this.newMessage('Animal eliminado');
+    });
+  }
+
   ngOnInit() {
     this.getAllAnimals();
     this.animalForm = this.formBuilder.group({

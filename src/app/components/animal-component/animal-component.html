@@ -19,6 +19,8 @@
         <th scope="col">Nombre</th>
         <th scope="col">Edad</th>
         <th scope="col">Tipo</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +34,11 @@
             <i class="bi bi-pencil-square"></i>
           </button>
         </td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="deleteAnimalEntry(item._id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
       </tr>
       }
     </tbody>
@@ -40,7 +47,13 @@
 <!--TERMINA TABLA-->
 
 <!-- Modal New Animal-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,7 +106,12 @@
 </div>
 
 <!-- Actualizar animal -->
-<form *ngIf="editableAnimal" class="card p-2" (ngSubmit)="updateAnimalEntry()" [formGroup]="animalForm">
+<form
+  *ngIf="editableAnimal"
+  class="card p-2"
+  (ngSubmit)="updateAnimalEntry()"
+  [formGroup]="animalForm"
+>
   <div class="mb-3">
     <label for="nombre" class="form-label">Nombre</label>
     <input
@@ -116,7 +134,7 @@
     />
   </div>
   <div class="mb-3">
-    <label for="tipo" class="form-label">Tipo</label> 
+    <label for="tipo" class="form-label">Tipo</label>
     <input
       type="text"
       class="form-control"
